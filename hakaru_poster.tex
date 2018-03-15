@@ -118,11 +118,16 @@
 \caption{\tiny{PDF of the normal distribution, with $\mu = 0$ and $\sigma = 1$}}
 \end{figure}
 
-\tiny{Hakaru is an experimental \textbf{probabilistic programming language}, which is designed so that probabilistic models (implementations of statistical distributions) can be easily expressed programatically. Running a hakaru program generates a stream of random numbers (known as samples) that are distributed according to the distribution defined in the program code. The language is quite small given its specialized domain. However, Hakaru programs can be compiled to C and Haskell, making for an easy way to export probabilistic models defined in Hakaru into imperative and functional programming domains. These can then be used within larger applications (e.g. simulating scenarios with inherent uncertainty, generating training sets for machine learning algorithms).}
+\tiny{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
+  - Niche application -> small language with limited features
+  - Running hakaru program generates stream of random numbers distributed according the statistical distribution modeled.
+  - Compile to C and Haskell -> Export models for use in larger applications
+  - Terminology: implementation of statistical distribution == probabilistic model == model
+}
 
 \bigskip
 
-\tiny{The purpose of Hakaru is to simplify the process of implementing efficient probabilistic models. The small size of the language solves the problem of simplifying model implementation. In order to simplify the process of making these implementations efficient, Hakaru includes some inference algorithms that transform Hakaru programs into other forms. Most pertinent to our project is `hk-maple` (formerly known as `simplify`). In short, `hk-maple` takes a hakaru program file as an argument and uses Maple to perform algebraic transformations. If the Simplify mode of `hk-maple` is used (the default mode), it returns an equivalent hakaru program with greater sampling efficiency. In applications which may require billions of samplings, such as machine learning, this has the potential to save a significant amount of processing time!}
+\tiny{`hk-maple` is a provided inference algorithm which takes a hakaru program file as an argument and uses Maple to perform algebraic transformations. If the Simplify mode of `hk-maple` is used (the default mode), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
 
 \end{block}
 
@@ -137,10 +142,9 @@
 
 
 \begin{itemize}
-	\item[\textbf{$\star$}] \textit{A Hakaru program is a probabalistic model.}
-	\item[\textbf{$\star$}] \textit{A Hakaru program is an implementation of a statistical distribution.}
-	\item[\textbf{$\star$}] \textit{Values that are pulled from a distribution are called samples, or measures.}
-	\item[\textbf{$\star$}] \textit{In mathematics, we write} $\textit{X} \sim Normal(0, 1)$ \textit{to denote that the random variable is normally distributed, while in Hakaru code we write} {\tt \tiny{x <$\sim$ normal(0, 1)}} \textit{, which pulls a sample from the distribution and binds it to the variable} {\tt \tiny{x.}}
+	\item[\textbf{$\star$}] \textit{Hakaru program == implementation of statistical distribution == probabalistic model == model.}
+	\item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures == samples}
+	\item[\textbf{$\star$}] \textit{In mathematics, we write} $\textit{X} \sim Normal(0, 1)$ \textit{to denote that the random variable is normally distributed, while in Hakaru code we write} {\tt \tiny{x <$\sim$ normal(0, 1)}} \textit{, which pulls a sample from the distribution and binds it to the variable} {\tt \tiny{x.}} <<< THIS WHOLE PART JUST PUT IT THE WAY I HAVE IT IN THE POSTER IDEAS DOC. This is wordy and doesn't make the important parts stand out. The "~ vs <~" idea needs to pop out way more. Hence giving it a header and bullet points so the 2 notations overlap. >>>
 	\item[\textbf{$\star$}] \textit{PDF: Probability Density Function (continuous random variables).}
 	\item[\textbf{$\star$}] \textit{PMF: Probability Mass Function (discrete random variables).}
 	\item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart (describes relationships and transformations between different distributions).}
@@ -160,15 +164,20 @@
 \justifying
 
 
-\tiny{The purpose of our project is two-fold. Our first objective is to increase the accessibility to Hakaru for future users. In its current state, the Hakaru language only offers a small set of primitive distributions. Our main effort in this regard has been the development of a standard library in which we have implemented over 60 statistical distributions which cover a wide range of potential applications. Another effort to increase accessibility has been the development of a syntax highlighting package for Sublime Text; the only one currently implemented for a GUI text editor. This package has been invaluable in increasing code readability/writability, and optimizing our workflow.}
+\tiny{OBJECTIVES:
+        - increase language accessibility
+        - test language validity}
 
 \bigskip
 
-\tiny{Our second objective is to test the validity of the Hakaru language. Our focus is on writing test cases based on well-known relationships between the various distributions implemented in the standard library. In general, our test cases transform two related distributions so that the resulting distributions are (hypothetically) equivalent to each other. The number of possible test cases we could write in this vein is beyond the scope of this project. To this end, we have focused on comprehensively testing a small set distributions, with the intention of laying down the groundwork for future testing in this area.}
+\tiny{ENDEAVOURS:
+        - Standard Library Development
+        - Syntax-highlighting-for-hakaru Package for Sublime Text
+        - Test case writing}
 
 \bigskip
 
-\tiny{It is also worth noting that probabilistic reasoning is a foundational technology in machine learning. Expansion of the Hakaru langauge presents an opportunity to learn more about this domain and potentially develop novel applications.}
+\tiny{It is also worth noting that probabilistic reasoning is a foundational technology in machine learning. Expansion of the Hakaru langauge presents an opportunity to learn more about this domain and potentially develop novel applications.} <<< Feels weak, bro >>>
 
 \end{block}
 
@@ -179,7 +188,11 @@
 \begin{block}{Standard Library Development}
 \justifying
 
-\tiny{Whenever possible, we have implemented distributions as transformations on pre-existing models, starting with the primitive distributions that are native to Hakaru (normal, categorical, etc.). We have used the UDR to guide the development of the standard library, as it reveals many useful relationships bewteen relevant distributions (see Figure 2). In the case of multiple possible implementations for a distribution, we have opted for the implementation which adopts the shortest path from a primitive distribution on the UDR.}
+\tiny{ PHILOSOPHY:
+        - Whenever possible, implement distributions as transformations on pre-existing models.
+        - Hakaru has several primitive distributions we can build off of.
+        - Reference the UDR chart for possible ways to implement.
+        - In the case of multiple possible implementations, take the shortest possible path from a primitive distribution on the UDR.}
 
 \bigskip
 
