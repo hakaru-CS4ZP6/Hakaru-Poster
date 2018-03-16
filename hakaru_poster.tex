@@ -81,7 +81,7 @@
 
 \bigskip
 
-\tiny{The mathematical functions that we use to describe these probabilties are called probability distributions and the quantity that denotes the outcome of the experiment is called a random variable. A random variable can take on continuous or discrete values depending on the application. Continuous random variables are formally defined by a probability density function (PDF), which maps the outcomes of the random variable to real numbers that represent a probability. Similarly, a discrete random variables is described by a probability mass function (PMF). As an example, let us consider one of the most ubiquitous and naturally occuring distributions, the normal distribution. We can say that a random variable, \textit{X}, is normally distributed with the following notation. }
+\tiny{The mathematical functions that we use to describe these probabilties are called probability distributions and the quantity that denotes the outcome of the experiment is called a random variable. A random variable can take on continuous or discrete values depending on the application. Continuous random variables are formally defined by a probability density function (PDF), which maps the outcomes of the random variable to real numbers that represent a probability. Similarly, a discrete random variable is described by a probability mass function (PMF). As an example, let us consider one of the most ubiquitous and naturally occuring distributions, the normal distribution. We can say that a random variable, \textit{X}, is normally distributed with the following notation. }
 
 \begin{equation*}
 \begin{aligned}
@@ -119,15 +119,19 @@
 \end{figure}
 
 \tiny{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
-  - Niche application -> small language with limited features
-  - Running hakaru program generates stream of random numbers distributed according the statistical distribution modeled.
-  - Compile to C and Haskell -> Export models for use in larger applications
-  - Terminology: implementation of statistical distribution == probabilistic model == model
+
+\begin{itemize}
+    \item Niche application $\Rightarrow$ small language with limited features.
+    \item Running a hakaru program generates a stream of random numbers distributed according the statistical distribution modeled.
+    \item Hakaru code can be compiled to C and Haskell so that models can be exported for use in larger applications.
+    \item Terminology: implementation of statistical distribution == probabilistic model == model.
+\end{itemize}
+
 }
 
 \bigskip
 
-\tiny{`hk-maple` is a provided inference algorithm which takes a hakaru program file as an argument and uses Maple to perform algebraic transformations. If the Simplify mode of `hk-maple` is used (the default mode), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
+\tiny{`hk-maple' is a provided inference algorithm which takes a hakaru program file as an argument and uses Maple to perform algebraic transformations. If the Simplify mode of `hk-maple' is used (the default mode), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
 
 \end{block}
 
@@ -143,8 +147,13 @@
 
 \begin{itemize}
 	\item[\textbf{$\star$}] \textit{Hakaru program == implementation of statistical distribution == probabalistic model == model.}
-	\item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures == samples}
-	\item[\textbf{$\star$}] \textit{In mathematics, we write} $\textit{X} \sim Normal(0, 1)$ \textit{to denote that the random variable is normally distributed, while in Hakaru code we write} {\tt \tiny{x <$\sim$ normal(0, 1)}} \textit{, which pulls a sample from the distribution and binds it to the variable} {\tt \tiny{x.}} <<< THIS WHOLE PART JUST PUT IT THE WAY I HAVE IT IN THE POSTER IDEAS DOC. This is wordy and doesn't make the important parts stand out. The "~ vs <~" idea needs to pop out way more. Hence giving it a header and bullet points so the 2 notations overlap. >>>
+	\item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures == samples.}
+	\item[\textbf{$\star$}] `{\textbf{$\sim$}}' vs `{\textbf{$<\sim$}}':
+      \begin{itemize}
+          \tiny
+          \item[--] \tiny{$X \sim Normal(0, 1)$ means that the random variable, $X$, is distributed according to the standard normal distribution (statistics literature).}
+          \item[--] \tiny{{\tt \tiny{x $<\sim$ normal(0, 1)}} means to pull a random variable from the standard normal distribution and bind it to the variable, {\tt \tiny{x}} (Hakaru code).}
+      \end{itemize}
 	\item[\textbf{$\star$}] \textit{PDF: Probability Density Function (continuous random variables).}
 	\item[\textbf{$\star$}] \textit{PMF: Probability Mass Function (discrete random variables).}
 	\item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart (describes relationships and transformations between different distributions).}
@@ -177,7 +186,6 @@
 
 \bigskip
 
-\tiny{It is also worth noting that probabilistic reasoning is a foundational technology in machine learning. Expansion of the Hakaru langauge presents an opportunity to learn more about this domain and potentially develop novel applications.} <<< Feels weak, bro >>>
 
 \end{block}
 
