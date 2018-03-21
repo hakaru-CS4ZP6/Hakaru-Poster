@@ -76,10 +76,15 @@
 
 \begin{block}{Introduction}
 \justifying
+\bigskip
+\small{\textbf{Applications}}
 
-\tiny{Often, we wish to create a model for some kind of real world phenomenon so that we can extract useful information and learn more about it. For example, in a machine learning application, the goal is often to predict or infer information about the model based on the past outcomes of some kind of experiment. An experiment could result in many  different outcomes, each one with a different likelihood (probability).}
+\break
+\bigskip
+\tiny{Real world phenomena often behave according to a probability distribution. By letting us sample from distributions, Hakaru enables us to model real world phenomena that include uncertainty. Hakaru can then perform transformations on these models to turn them into conditional probabilities that let us make inferences based on a prior. This for example is useful in machine learning applications where the goal is often to predict or infer information about the model based on the past outcomes.}
 
 \bigskip
+\small{\textbf{Mathematical Background}}
 
 \tiny{The mathematical functions that we use to describe these probabilties are called probability distributions and the quantity that denotes the outcome of the experiment is called a random variable. A random variable can take on continuous or discrete values depending on the application. Continuous random variables are formally defined by a probability density function (PDF), which maps the outcomes of the random variable to real numbers that represent a probability. Similarly, a discrete random variable is described by a probability mass function (PMF). As an example, let us consider one of the most ubiquitous and naturally occuring distributions, the normal distribution. We can say that a random variable, \textit{X}, is normally distributed with the following notation. }
 
@@ -117,6 +122,8 @@
 \end{tikzpicture}
 \caption{\tiny{PDF of the normal distribution, with $\mu = 0$ and $\sigma = 1$}}
 \end{figure}
+\bigskip
+\small{\textbf{Language guide}}
 
 \tiny{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
 
@@ -174,16 +181,8 @@
 
 
 \tiny{OBJECTIVES:
-        - increase language accessibility
-        - test language validity}
-
-\bigskip
-
-\tiny{ENDEAVOURS:
-        - Standard Library Development
-        - Syntax-highlighting-for-hakaru Package for Sublime Text
-        - Test case writing}
-
+Increase language accessibility: We have added functions that produce samples from various distributions to the standard library. We created a syntax-highlighting package for Sublime Text to help with the readability of the code.
+Test language validity: We used Hakaru?s testing procedure to confirm the validity of the distribution of our samples.}
 \bigskip
 
 
@@ -196,10 +195,17 @@
 \begin{block}{Standard Library Development}
 \justifying
 
-\tiny{ In order to make Hakaru more accessible to users, the standard library should implement probabilistic models of statistical distributions that are commonly used by statisticians. To this this end, we have implemented the distributions described in the UDR, a portion of which can be seen below. In general, we have used the following principles to guide the development of the standard library: 
-        - Whenever possible, implement distributions as transformations on pre-existing models.
-        - Reference the UDR chart for possible ways to implement each distribution.
-        - In the case of multiple possible implementations, take the shortest possible path from a primitive distribution on the UDR.}
+\tiny{ In order to make Hakaru more accessible, the standard library should help users create probabilistic models using statistical distributions that are commonly used by statisticians. To this this end, we have implemented functions that sample from the distributions described in the UDR. }
+
+
+\small{\textbf{Sampling Distributions using Transformations}}
+
+\bigskip
+\tiny{
+One way to sample from a distribution is to apply algebraic transformations on the output of a sample generating function that samples from another distribution. In other words, if X is distributed according to a PDF/PMF, then f(X) is distributed according to a new distribution with a new PDF/PMF. These transformations are well outlined and documented in the UDR chart, and a portion of the chart is shown in the figure2.
+
+For our development we tried to implement distributions as transformations on pre-existing models whenever possible. Hakaru has several primitive distributions we can build off of. In the case of multiple possible implementations, we took the shortest possible path from a primitive distribution on the UDR.
+}
 
 \bigskip
 
@@ -251,11 +257,10 @@ Some distributions on the UDR are unreachable from Hakaru's primitive distributi
 \begin{variableblock}{}{}{}
 \justifying
 
-\small{\textbf{Discrete Distributions from PMF}}
+\small{\textbf{Sampling Distributions from PMF/PDF}}
 
 \bigskip
-
-\tiny{When the PMF implies a finite number of categories, the use of the primitive {\tt \tiny{categorical}} distribution combined with the array constructor language feature lends itself very well to an implementation of the distribution. However, discrete distributions have PMFs implying an infinite number of categories. This can’t be implemented using {\tt \tiny{categorical}}, which requires a finite size array. In this case, we use the {\tt \tiny{weight}} function primitive to Hakaru. The {\tt \tiny{weight}} function assigns a weight to each sample. Shown below is an example using the {\tt \tiny{weight}} function.
+\tiny{Sometimes we do not know of any transformations (arrows in UDR) coming into a distribution. In these cases there are two ways to generate samples from that distribution. If the number of possible values for the random variable are countable(not infinite), we use the built in categorical function in Hakaru. Otherwise, we use the built in weight function. Shown below is an example using the {\tt \tiny{weight and categorical}} functions.
 }
 
 \begin{center}
