@@ -56,7 +56,7 @@
 %textblock and block seem to work nicely to organize layout
 \begin{frame}[fragile]
 
-\begin{textblock}{2}(0.8,1)
+\begin{textblock}{2}(0.8,0.9)
 \includegraphics[height=8.5cm]{mac.png}
 \end{textblock}
 
@@ -68,7 +68,7 @@
 \titlepage
 \end{textblock}
 
-\begin{textblock}{5}(0.25,4)
+\begin{textblock}{5}(0.25,3.75)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction
@@ -77,15 +77,16 @@
 \begin{block}{\Large{Introduction}}
 \justifying
 
-\large{\textbf{Applications}}
-
-\tiny{Real world phenomena often behave according to a probability distribution. By letting us sample from distributions, Hakaru enables us to model real world phenomena that include uncertainty. Hakaru can then perform transformations on these models to turn them into conditional probabilities that let us make inferences based on a priori knowledge. This, for example, is useful in machine learning applications where the goal is often to predict or infer information about the model based on the past outcomes.}
+\normalsize{{\textbf{Applications}}}
 
 \bigskip
-\large{\textbf{Mathematical Background}}
+\scriptsize{Real world phenomena often behave according to a probability distribution. By letting us sample from distributions, Hakaru enables us to model real world phenomena that include uncertainty. Hakaru can then perform transformations on these models to turn them into conditional probabilities that let us make inferences based on a priori knowledge. This, for example, is useful in machine learning applications where the goal is often to predict or infer information about the model based on the past outcomes.}
 
+\bigskip
+\normalsize{\textbf{Mathematical Background}}
 
-\tiny{The mathematical functions that we use to describe these probabilities are called probability distributions and the quantity that denotes the outcome of the experiment is called a random variable. A random variable can take on continuous or discrete values depending on the application. Continuous random variables are formally defined by a probability density function (PDF), which maps the outcomes of the random variable to real numbers that represent a probability. Similarly, a discrete random variable is described by a probability mass function (PMF). As an example, let us consider one of the most ubiquitous and naturally occurring distributions, the normal distribution. We can say that a random variable, \textit{X}, is normally distributed with the following notation. }
+\bigskip
+\scriptsize{The mathematical functions that we use to describe these probabilities are called probability distributions and the quantity that denotes the outcome of the experiment is called a random variable. A random variable can take on continuous or discrete values depending on the application. Continuous random variables are formally defined by a probability density function (PDF), which maps the outcomes of the random variable to real numbers that represent a probability. Similarly, a discrete random variable is described by a probability mass function (PMF). As an example, let us consider one of the most ubiquitous and naturally occurring distributions, the normal distribution. We can say that a random variable, \textit{X}, is normally distributed with the following notation. }
 
 \begin{equation*}
 \begin{aligned}
@@ -94,7 +95,7 @@
 \end{equation*}
 
 \bigskip
-\tiny{Here, we can see that the normal distribution is parametrized by $\mu$, the population mean, and $\sigma$, the standard deviation. A plot the PDF is shown below. Remember that the PDF describes the liklihood that a value sampled from this distribution will equal $x$.}
+\scriptsize{Here, we can see that the normal distribution is parametrized by $\mu$, the population mean, and $\sigma$, the standard deviation. A plot the PDF is shown below. Remember that the PDF describes the liklihood that a value sampled from this distribution will equal $x$.}
 
 \begin{equation*}
 \begin{aligned}
@@ -122,20 +123,22 @@
 \caption{\tiny{PDF of the normal distribution, with $\mu = 0$ and $\sigma = 1$}}
 \end{figure}
 
-\tiny{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
+\normalsize{\textbf{Language Guide}}
+
+\bigskip
+\scriptsize{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
 
 \begin{itemize}
-    \item Niche application means that Hakaru is a small language with limited features.
-    \item Running a Hakaru program generates a stream of random numbers distributed according the statistical distribution modeled.
+    \item Niche application $\Rightarrow$ small language with limited features.
+    \item Running a hakaru program generates a stream of random numbers distributed according the statistical distribution modeled.
     \item Hakaru code can be compiled to C and Haskell so that models can be exported for use in larger applications.
-    \item Terminology: implementation of statistical distribution $\Longleftrightarrow$ probabilistic model $\Longleftrightarrow$ model.
+    \item Terminology: implementation of statistical distribution == probabilistic model == model.
 \end{itemize}
 
 }
 
 \bigskip
-
-\tiny{`hk-maple' is a provided inference algorithm which takes a hakaru program file as an argument and uses Maple to perform algebraic transformations. If the Simplify mode of `hk-maple' is used (the default mode), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
+\scriptsize{`hk-maple' is a provided inference algorithm that uses Maple to perform algebraic transformations on hakaru programs. In its default mode (Simplify), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
 
 \end{block}
 
