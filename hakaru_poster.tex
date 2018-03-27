@@ -171,34 +171,32 @@
 
 
 
-\begin{textblock}{5}(5.5,4)
+\begin{textblock}{5}(5.5,3.75)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Motivation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{Motivation}
+\begin{block}{\Large{Motivation}}
 \justifying
 
 
-\tiny{\textbf{OBJECTIVES:}
+\normalsize{\textbf{Objectives}}
 
+\scriptsize{
 \begin{itemize}
-  \item[\textbf{$\star$}] \textit{Increase language accessibility: One of our main aims was to add more features to the language such as primivite mathematical functions (e.g. log, choose), new distributions (standard library), error handling, etc.}
-  \item[\textbf{$\star$}] \textit{Test language validity: The results of the `hk-maple' tests that we run can validate the Hakaru language if the transformations are recognized by the simplifier. }
+  \item[\textbf{$\star$}] Increase language accessibility: add new language features such as primivite mathematical functions (e.g. log, choose), new distributions, error handling, etc.
+  \item[\textbf{$\star$}] Test language validity: use relationships between distributions to test the validity of program transformations like `hk-maple'. 
 \end{itemize}
-        }
+}
 
-\bigskip
+\normalsize{\textbf{Endeavours}}
 
-\tiny{\textbf{ENDEAVOURS:}
-
-
-
+\scriptsize{
 \begin{itemize}
-  \item[\textbf{$\star$}] \textit{Standard library development: This mainly involves using the UDR to branch out and implement new distributions. }
-  \item[\textbf{$\star$}] \textit{Syntax-highlighting-for-hakaru Package for Sublime Text: This is a package developed by Mahmoud. It makes developing Hakaru code so much more convenient and streamlined. }
-  \item[\textbf{$\star$}] \textit{Test case writing: There are a plethora of test cases to consider with these distributions, so we only focus on exhausting the list for a select few (e.g. chi-square). }
+  \item[\textbf{$\star$}] Standard library development: the UDR is used to branch out and implement new distributions. 
+  \item[\textbf{$\star$}] Syntax-highlighting-for-hakaru package for Sublime Text: this package makes developing Hakaru code much more convenient and streamlined (Mahmoud).
+  \item[\textbf{$\star$}] Test case writing: we focus mainly on comprehensively testing only a select few distributions (e.g. chi-square).
 \end{itemize}
         }
 
@@ -211,19 +209,19 @@
 % Standard Library Development
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{Standard Library Development}
+\begin{block}{\Large{Standard Library Development}}
 \justifying
 
-\tiny{ In order to make Hakaru more accessible to users, the standard library should implement probabilistic models of statistical distributions that are commonly used by statisticians. To this this end, we have implemented the distributions described in the UDR, a portion of which can be seen below. In general, we have used the following principles to guide the development of the standard library: 
+\scriptsize{In order to make Hakaru more accessible to users, the standard library should implement commonly used probabilistic models. To this this end, we have implemented the distributions described in the UDR, a portion of which can be seen below. In general, we have used the following principles to guide the development of the standard library: 
 
 
-\tiny{
+\scriptsize{
 
-
+\bigskip
 \begin{itemize}
-  \item[\textbf{$\star$}] \textit{Whenever possible, implement distributions as transformations on pre-existing models. }
-  \item[\textbf{$\star$}] \textit{Reference the UDR chart for possible ways to implement each distribution. }
-  \item[\textbf{$\star$}] \textit{In the case of multiple possible implementations, take the shortest possible path from a primitive distribution on the UDR. }
+  \item Whenever possible, implement distributions as transformations on pre-existing models.
+  \item Reference the UDR chart for possible ways to implement each distribution.
+  \item In the case of multiple possible implementations, take the shortest possible path from a primitive distribution on the UDR.
 \end{itemize}
         }
 }
@@ -236,7 +234,7 @@
 \caption{\tiny{A snapshot of the UDR shows how the normal distribution can be transformed into a multitude of other distributions.}}
 \end{figure}
 
-\tiny{Hakaru functions representing probabilistic models (i.e. functions with a {\tt \tiny{measure(<type>)}} return type) cannot be used as operands in normal mathematical operations. This is to say we cannot transform models directly (i.e. we can’t do algebraic transformation on the PDF). The only operator we can use on a model is bind ({\tt \tiny{<$\sim$}}), to pull a sample from it. However, we are able to transform samples however we like. Therefore, we are interested in implementing transformations of the following form.}
+\scriptsize{Hakaru functions representing probabilistic models (i.e. functions with a {\tt \tiny{measure(<type>)}} return type) cannot be used as operands in normal mathematical operations. This is to say we cannot transform models directly (i.e. we can’t do algebraic transformation on the PDF). The only operator we can use on a model is bind ({\tt \tiny{<$\sim$}}), to pull a sample from it. However, we are able to transform samples however we like. Therefore, we are interested in implementing transformations of the following form.}
 
 \begin{equation*}
 \begin{aligned}
@@ -246,7 +244,7 @@
 
 \bigskip
 
-\tiny{In the equation above, \textit{p} is a set of values parameterizing the distribution \textit{A}}, \textit{q} is a set of values parameterizing the distribution \textit{B}, \textit{R(p, q)} is a set of relationships between \textit{p} and \textit{q} that must be satisfied, and \textit{f} is a function that applies a transformation to a sample. We can expand this definition to include transformations defined in terms of an aggregation of multiple independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 3). 
+\scriptsize{In the equation above, \textit{p} is a set of values parameterizing the distribution \textit{A}}, \textit{q} is a set of values parameterizing the distribution \textit{B}, \textit{R(p, q)} is a set of relationships between \textit{p} and \textit{q} that must be satisfied, and \textit{f} is a function that applies a transformation to a sample. We can expand this definition to include transformations defined in terms of an aggregation of multiple independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 3). 
 
 \begin{figure}
 \centering
@@ -265,7 +263,7 @@
 \end{textblock}
 
 
-\begin{textblock}{5}(10.75,4)
+\begin{textblock}{5}(10.75,3.75)
 
 \begin{variableblock}{}{}{}
 \justifying
