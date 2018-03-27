@@ -260,10 +260,6 @@
 
 \begin{textblock}{5}(10.75,4)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Testing Relationships Between Distributions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{variableblock}{}{}{}
 \justifying
 
@@ -283,50 +279,7 @@
 
 \bigskip
 
-Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distributions. We now discuss this process in the following examples. 
-
-\small{\textbf{Discrete Distributions from PMF}}
-
-\bigskip
-
-\tiny{When the PMF implies a finite number of categories, the use of the primitive {\tt \tiny{categorical}} distribution combined with the array constructor language feature lends itself very well to an implementation of the distribution. However, discrete distributions have PMFs implying an infinite number of categories. This can’t be implemented using {\tt \tiny{categorical}}, which requires a finite size array. In this case, we use the {\tt \tiny{weight}} function primitive to Hakaru. The {\tt \tiny{weight}} function assigns a weight to each sample. Shown below is an example using the {\tt \tiny{weight}} function.
-}
-
-\begin{center}
-\justifying
-~~~~~~~~~~~~~~~~~~~~~~~~~~\tt{ \small{burglary {\color{green}<$\sim$} {\color{blue}categorical}([{\color{purple}0.0001}, {\color{purple}0.9999}])}}
-
-~~~~~~~~~\tt{\small{{\color{blue}weight}([{\color{purple}0.95}, {\color{purple}0.01}][burglary],}}
-
-~~~~~~~~~\tt{\small{{\color{red}return} [{\color{red}true},{\color{red}false}][burglary])}}
-\end{center}
-
-\bigskip
-
-\tiny{In this example, the value {\tt \tiny{burglary}} is sampled from a {\tt \tiny{categorical}} distribution. Then, the samples are reweighted so that {\tt \tiny{true}} has a weight of $0.95$ and {\tt \tiny{false}} has a weight of 0.01. For the distribution samplings that are implemented in the standard library, the first argument is the PMF or PDF of the distribution and the second argument is the random variable. For example the following is the code that implements a model of the discrete Weibull distribution}
-
-\begin{center}
-\justifying
-~~~~~~~~~~~~~~~~~\tt{\small{{\color{red}def} {\color{blue}discreteWeibull}(p {\color{green}prob}, beta {\color{green}prob}):}}
-
-~~~~~~~~\tt{\small {x {\color{green} <$\sim$} {\color{blue} counting}()}}
-
-~~~~~~~~\tt{\small{{\color{blue}weight}({\color{red}if} (x {\color{green}<} {\color{purple}0}):~{\color{purple}0} {\color{red}else}:~({\color{purple}1}~{\color{green}-}~p)~{\color{green}**}~(x~{\color{green}**}~beta) }}
-
-~~~~~~~~~~~~~~~\tt{\small{{\color{green}-} ({\color{purple}1~}{\color{green}-}~p){\color{green}~**~}((x{\color{green}~+}{\color{purple}~1}){\color{green}~**~}beta), {\color{red}return} x)}}
-\end{center}
-
-\bigskip
-
-\tiny{The first line of code in the function definition, {\tt \tiny{x <$\sim$ counting()}}, assigns an integer to \textit{x} according to a uniform distribution across all integers.
-The first argument of {\tt \tiny{weight}} is the PMF of the distribution and the second argument is the random variable. In this way, each instance of the random variable is given a weight equal to that instance's probability.
-}
-
-\small{\textbf{Continuous Distributions from PMF}}
-
-\bigskip
-
-\tiny{This is accomplished similar to how discrete distributions with infinite categories implied by their PMF are implemented. The main difference is that the {\tt \tiny{lebesgue}} function is used instead of {\tt \tiny{counting}} to sample values from the real number line.}
+Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distributions. 
 
 
 \end{variableblock}
