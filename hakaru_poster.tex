@@ -1,5 +1,5 @@
 \documentclass[22pt]{beamer}
-\usepackage[orientation=portrait, size=custom, width=91.44, height=60,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
+\usepackage[orientation=portrait, size=custom, width=100.44, height=70,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
 \usepackage[absolute,overlay]{textpos}
 \usepackage{bookmark} %pdflatex says to use this to avoid errors...
 \usepackage{graphicx} %for including images
@@ -68,13 +68,13 @@
 \titlepage
 \end{textblock}
 
-\begin{textblock}{5}(0.25,3.75)
+\begin{textblock}{5}(0.25,3.6)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\Large{Introduction}}
+\begin{block}{\large{Introduction}}
 \justifying
 
 \normalsize{{\textbf{Applications}}}
@@ -114,13 +114,13 @@
         axis y line=middle,
         axis line style=<->,
     	width=0.8*\textwidth,
-        height=\axisdefaultheight
+        height=1.2*\axisdefaultheight
         ]
         \addplot[no marks,blue,-] expression[domain=-5:5,samples=100]{1/sqrt(2*pi)*exp(-x^2/2)} 
                     node[pos=0.65,anchor=south west]{\textit{f(x $\mid$ 0, 1)}}; 
     \end{axis}
 \end{tikzpicture}
-\caption{\tiny{PDF of the normal distribution, with $\mu = 0$ and $\sigma = 1$}}
+\caption{\tiny{PDF of the normal distribution $^{[1]}$, with $\mu = 0$ and $\sigma = 1$}}
 \end{figure}
 
 \normalsize{\textbf{Language Guide}}
@@ -129,10 +129,10 @@
 \scriptsize{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the way users implement statistical distributions. 
 
 \begin{itemize}
-    \item Niche application $\Rightarrow$ small language with limited features.
+    \item Niche application means that Hakaru is a small language with limited features.
     \item Running a hakaru program generates a stream of random numbers distributed according the statistical distribution modeled.
     \item Hakaru code can be compiled to C and Haskell so that models can be exported for use in larger applications.
-    \item Terminology: implementation of statistical distribution == probabilistic model == model.
+    \item Terminology: implementation of statistical distribution $\Longleftrightarrow$ probabilistic model $\Longleftrightarrow$ model.
 \end{itemize}
 
 }
@@ -146,38 +146,35 @@
 % Key Concepts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{Key Concepts}
+\begin{block}{\large{Key Concepts}}
 \justifying
 
-
-\tiny{This section is dedicated to explaining some key ideas and terminology for our project.}
-
-
+\scriptsize{
 \begin{itemize}
-	\item[\textbf{$\star$}] \textit{Hakaru program $\Longleftrightarrow$ implementation of statistical distribution $\Longleftrightarrow$ probabalistic model $\Longleftrightarrow$ model.}
-	\item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures $\Longleftrightarrow$ samples.}
-	\item[\textbf{$\star$}] `{\textbf{$\sim$}}' vs `{\textbf{$<\sim$}}':
+  \item[\textbf{$\star$}] \textit{Hakaru program $\Longleftrightarrow$ implementation of statistical distribution $\Longleftrightarrow$ probabalistic model $\Longleftrightarrow$ model.}
+  \item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures $\Longleftrightarrow$ samples.}
+  \item[\textbf{$\star$}] `{\textbf{$\sim$}}' vs `{\textbf{$<\sim$}}':
       \begin{itemize}
           \tiny
           \item[--] \tiny{$X \sim Normal(0, 1)$ means that the random variable, $X$, is distributed according to the standard normal distribution (statistics literature).}
           \item[--] \tiny{{\tt \tiny{x $<\sim$ normal(0, 1)}} means to pull a random variable from the standard normal distribution and bind it to the variable, {\tt \tiny{x}} (Hakaru code).}
       \end{itemize}
-	\item[\textbf{$\star$}] \textit{PDF: Probability Density Function (continuous random variables).}
-	\item[\textbf{$\star$}] \textit{PMF: Probability Mass Function (discrete random variables).}
-	\item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart (describes relationships and transformations between different distributions).}
+  \item[\textbf{$\star$}] \textit{PDF: Probability Density Function (continuous random variables).}
+  \item[\textbf{$\star$}] \textit{PMF: Probability Mass Function (discrete random variables).}
+  \item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart (describes relationships and transformations between different distributions).}
 \end{itemize}
-
+}
 \end{block}
 
 
+\begin{textblock}{5}(5.5,3.6)
 
-\begin{textblock}{5}(5.5,3.75)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Motivation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\Large{Motivation}}
+\begin{block}{\large{Motivation}}
 \justifying
 
 
@@ -185,8 +182,8 @@
 
 \scriptsize{
 \begin{itemize}
-  \item[\textbf{$\star$}] Increase language accessibility: add new language features such as primivite mathematical functions (e.g. log, choose), new distributions, error handling, etc.
-  \item[\textbf{$\star$}] Test language validity: use relationships between distributions to test the validity of program transformations like `hk-maple'. 
+  \item Increase language accessibility: add new language features such as primivite mathematical functions (e.g. log, choose), new distributions, error handling, etc.
+  \item Test language validity: use relationships between distributions to test the validity of program transformations like `hk-maple'. 
 \end{itemize}
 }
 
@@ -194,9 +191,9 @@
 
 \scriptsize{
 \begin{itemize}
-  \item[\textbf{$\star$}] Standard library development: the UDR is used to branch out and implement new distributions. 
-  \item[\textbf{$\star$}] Syntax-highlighting-for-hakaru package for Sublime Text: this package makes developing Hakaru code much more convenient and streamlined (Mahmoud).
-  \item[\textbf{$\star$}] Test case writing: we focus mainly on comprehensively testing only a select few distributions (e.g. chi-square).
+  \item Standard library development: the UDR is used to branch out and implement new distributions. 
+  \item Syntax-highlighting-for-hakaru package for Sublime Text: this package makes developing Hakaru code much more convenient and streamlined (Mahmoud).
+  \item Test case writing: we focus mainly on comprehensively testing only a select few distributions (e.g. chi-square).
 \end{itemize}
         }
 
@@ -209,7 +206,7 @@
 % Standard Library Development
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\Large{Standard Library Development}}
+\begin{block}{\large{Standard Library Development}}
 \justifying
 
 \scriptsize{In order to make Hakaru more accessible to users, the standard library should implement commonly used probabilistic models. To this this end, we have implemented the distributions described in the UDR, a portion of which can be seen below. In general, we have used the following principles to guide the development of the standard library: 
@@ -230,11 +227,11 @@
 
 \begin{figure}
 \centering
-\includegraphics[height=10cm]{UDR.png}
-\caption{\tiny{A snapshot of the UDR shows how the normal distribution can be transformed into a multitude of other distributions.}}
+\includegraphics[height=14cm]{UDR.png}
+\caption{\tiny{A snapshot of the UDR $^{[1]}$ shows how the normal distribution can be transformed into a multitude of other distributions.}}
 \end{figure}
 
-\scriptsize{Hakaru functions representing probabilistic models (i.e. functions with a {\tt \tiny{measure(<type>)}} return type) cannot be used as operands in normal mathematical operations. This is to say we cannot transform models directly (i.e. we can’t do algebraic transformation on the PDF). The only operator we can use on a model is bind ({\tt \tiny{<$\sim$}}), to pull a sample from it. However, we are able to transform samples however we like. Therefore, we are interested in implementing transformations of the following form.}
+\scriptsize{Unfortunately, Hakaru does not allow us to do algebraic operations on the PDF of a given distribution. The only operator we can use on a model is bind ({\tt \tiny{<$\sim$}}), to pull a sample from it. However, we are able to transform samples however we like. Therefore, we are interested in implementing transformations of the following form.}
 
 \begin{equation*}
 \begin{aligned}
@@ -244,7 +241,33 @@
 
 \bigskip
 
-\scriptsize{In the equation above, \textit{p} is a set of values parameterizing the distribution \textit{A}}, \textit{q} is a set of values parameterizing the distribution \textit{B}, \textit{R(p, q)} is a set of relationships between \textit{p} and \textit{q} that must be satisfied, and \textit{f} is a function that applies a transformation to a sample. We can expand this definition to include transformations defined in terms of an aggregation of multiple independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 3). 
+\scriptsize{In the equation above, \textit{p} parameterizes the distribution \textit{A}}, \textit{q} parameterizes the distribution \textit{B}, \textit{R(p, q)} is a set of relationships between \textit{p} and \textit{q} that must be satisfied, and \textit{f} is a function that applies a transformation to a sample. We can expand this definition to include transformations defined in terms of an aggregation of multiple independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 3). 
+
+\bigskip
+\scriptsize{Hakaru also lends itself very well to Bayesian transformations where we want to pull a sample from a distribution which is parameterized with a value sampled from another distribution. These transformations take the following form. Here, we are saying that if \textit{X} is parameterized by \textit{p}, then the distribution \textit{C}, which is parameterized by \textit{p} and \textit{q}, is equal to another distribution, \textit{B}, which is parameterized by \textit{q} and \textit{X}. The gamma-poisson distribution can be described by such a transformation (see Figure 4).}
+
+\begin{equation*}
+\begin{aligned}
+& \tcboxmath[boxrule=2pt,colframe=MacMaroon]{X \sim A(p) \Rightarrow Y \sim B(q, X) = C(p, q)}
+\end{aligned}
+\end{equation*}
+
+
+
+\end{block}
+
+
+
+\end{textblock}
+
+\end{textblock}
+
+
+\begin{textblock}{5}(10.75,3.6)
+
+\begin{variableblock}{}{}{}
+\justifying
+
 
 \begin{figure}
 \centering
@@ -252,29 +275,6 @@
 \caption{\tiny{Our implementation of the chi-square distribution.}}
 \end{figure}
 
-\bigskip
-
-
-
-\end{block}
-
-\end{textblock}
-
-\end{textblock}
-
-
-\begin{textblock}{5}(10.75,3.75)
-
-\begin{variableblock}{}{}{}
-\justifying
-
-\tiny{Hakaru also lends itself very well to Bayesian transformations where we want to pull a sample from a distribution which is parameterized with a value sampled from another distribution. These transformations take the following form. Here, we are saying that if \textit{X} is parameterized by \textit{p}, then the distribution \textit{C}, which is parameterized by \textit{p} and \textit{q}, is equal to another distribution, \textit{B}, which is parameterized by \textit{q} and \textit{X}. The gamma-poisson distribution can be described by such a transformation (see Figure 4).}
-
-\begin{equation*}
-\begin{aligned}
-& \tcboxmath[boxrule=2pt,colframe=MacMaroon]{X \sim A(p) \Rightarrow Y \sim B(q, X) = C(p, q)}
-\end{aligned}
-\end{equation*}
 
 \begin{figure}
 \centering
@@ -284,7 +284,7 @@
 
 \bigskip
 
-Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distributions. 
+\scriptsize{Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distribution.}
 
 
 \end{variableblock}
@@ -293,14 +293,14 @@ Some distributions on the UDR are unreachable from Hakaru's primitive distributi
 % Testing Relationships Between Distributions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{Testing Relationships Between Distributions}
+\begin{block}{\large{Testing Relationships Between Distributions}}
 \justifying
 
-\tiny{Recall that when developing the standard library, the UDR chart often implied multiple possible implementations for a given distribution. Naturally, we would expect alternative implementations for the same distribution to result in equivalent probabilistic models. This line of thought is the basis for the kinds of test cases we have implemented. More generally, we have the following hypothesis.}
+\scriptsize{Recall that when developing the standard library, the UDR chart often implied multiple possible implementations for a given distribution. Naturally, we would expect alternative implementations for the same distribution to result in equivalent probabilistic models. This line of thought is the basis for the kinds of test cases we have implemented. More generally, we have the following hypothesis.}
 
 \bigskip
 
-\tiny{Assume we know a proven relationship between 2 statistical distributions, A and B, which allows us to transform A and B into distributions that are equivalent to each other. Further assume this transformation takes on one of the forms discussed in the Standard Library Development section. We hypothesize that by applying the appropriate transformations to implementations of A and B, we can create two Hakaru programs whose `hk-maple' outputs will be equivalent to each other. Test cases that prove our hypothesis true indicate the validity of the Hakaru language implementation. Test cases that prove our hypothesis false indicate an underlying bug in the language definition which is to be passed back to the language developers.
+\scriptsize{Assume we know a proven relationship between 2 statistical distributions, A and B, which allows us to transform A and B into distributions that are equivalent to each other. Further assume this transformation takes on one of the forms discussed in the Standard Library Development section. We hypothesize that by applying the appropriate transformations to implementations of A and B, we can create two Hakaru programs whose `hk-maple' outputs will be equivalent to each other. Test cases that prove our hypothesis true indicate the validity of the Hakaru language implementation. Test cases that prove our hypothesis false indicate an underlying bug in the language definition which is to be passed back to the language developers.
 }
 
 \end{block}
@@ -309,9 +309,17 @@ Some distributions on the UDR are unreachable from Hakaru's primitive distributi
 % Conclusions & Future Work
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{Conclusions \& Future Work}
+\begin{block}{\large{Conclusions \& Future Work}}
 
-Conclusions \& Future Work
+\scriptsize{This project was aimed at increasing language accessibility and testing the validity of Hakaru. A lot of ground was covered in both of these aspects in this project, but compared to other popular languages, Hakaru is still under development and has a lot of room for improvement. Here are just a few examples of where major development can still be done.
+
+\begin{itemize}
+    \item Languages features: Hakaru can be expanded further with new features like import statements and error/exception handling. 
+    \item Standard library development: there are still many types of  distributions left to be implemented, such as multivariate distributions.
+    \item Testing: There are a plethora of relationships between distributions that have yet to be investigated.  
+\end{itemize}
+
+}
 
 \end{block}
 
@@ -319,9 +327,12 @@ Conclusions \& Future Work
 % References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{References}
+\begin{block}{\large{References}}
 
-References
+\scriptsize{[1]~L. Leemis, "Univariate Distribution Relationship Chart", Math.wm.edu, 2018. [Online]. Available: http://www.math.wm.edu/~leemis/chart/UDR/UDR.html. 
+
+[2]~P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, “Probabilistic Inference by Program Transformation in Hakaru (System Description)”, Functional and Logic Programming, pp. 62-79, 2016.}
+
 
 \end{block}
 
