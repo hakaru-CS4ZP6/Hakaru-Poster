@@ -74,10 +74,8 @@
 % Introduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Introduction}}
+\begin{block}{\Large{Introduction}}
 \justifying
-
-\normalsize{{\textbf{Applications}}}
 
 \bigskip
 \scriptsize{Real world phenomena often behave according to a probability distribution. By letting us sample from distributions, Hakaru enables us to model real world phenomena that include uncertainty. Hakaru can then perform transformations on these models to turn them into conditional probabilities that let us make inferences based on a priori knowledge. This, for example, is useful in machine learning applications where the goal is often to predict or infer information about the model based on the past outcomes.}
@@ -96,12 +94,6 @@
 
 \bigskip
 \scriptsize{Here, we can see that the normal distribution is parametrized by $\mu$, the population mean, and $\sigma$, the standard deviation. A plot the PDF is shown below. Remember that the PDF describes the liklihood that a value sampled from this distribution will equal $x$.}
-
-\begin{equation*}
-\begin{aligned}
-& \tcboxmath[boxrule=2pt,colframe=MacMaroon]{f(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}}
-\end{aligned}
-\end{equation*}
 
 \begin{figure}
 \begin{tikzpicture}[framed, style={rounded corners}][>=stealth]
@@ -146,7 +138,7 @@
 % Key Concepts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Key Concepts}}
+\begin{block}{\Large{Key Concepts}}
 \justifying
 
 \scriptsize{
@@ -174,7 +166,7 @@
 % Motivation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Motivation}}
+\begin{block}{\Large{Motivation}}
 \justifying
 
 
@@ -206,7 +198,7 @@
 % Standard Library Development
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Standard Library Development}}
+\begin{block}{\Large{Standard Library Development}}
 \justifying
 
 \scriptsize{In order to make Hakaru more accessible to users, the standard library should implement commonly used probabilistic models. To this this end, we have implemented the distributions described in the UDR, a portion of which can be seen below. In general, we have used the following principles to guide the development of the standard library: 
@@ -293,7 +285,7 @@
 % Testing Relationships Between Distributions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Testing Relationships Between Distributions}}
+\begin{block}{\Large{Testing Relationships Between Distributions}}
 \justifying
 
 \scriptsize{Recall that when developing the standard library, the UDR chart often implied multiple possible implementations for a given distribution. Naturally, we would expect alternative implementations for the same distribution to result in equivalent probabilistic models. This line of thought is the basis for the kinds of test cases we have implemented. More generally, we have the following hypothesis.}
@@ -309,7 +301,7 @@
 % Conclusions & Future Work
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{Conclusions \& Future Work}}
+\begin{block}{\Large{Conclusions \& Future Work}}
 
 \scriptsize{This project was aimed at increasing language accessibility and testing the validity of Hakaru. A lot of ground was covered in both of these aspects in this project, but compared to other popular languages, Hakaru is still under development and has a lot of room for improvement. Here are just a few examples of where major development can still be done.
 
@@ -327,7 +319,7 @@
 % References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{block}{\large{References}}
+\begin{block}{\Large{References}}
 
 \scriptsize{[1]~L. Leemis, "Univariate Distribution Relationship Chart", Math.wm.edu, 2018. [Online]. Available: http://www.math.wm.edu/~leemis/chart/UDR/UDR.html. 
 
