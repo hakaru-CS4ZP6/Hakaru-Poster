@@ -22,6 +22,7 @@
 \usepackage{caption}
 \captionsetup[figure]{font=scriptsize, labelfont=scriptsize}
 \usepackage{ragged2e}
+\usepackage{subfig}
 \usepackage{xcolor}
 
 %\mode<presentation>
@@ -276,7 +277,17 @@
 
 \bigskip
 
-\scriptsize{Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distribution.}
+\scriptsize{Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distribution.
+
+A Python script has been developed that samples a large amount of data and plots the results in a histogram. This is a useful tool for gaining confidence in the correctness of our implementations. The plots shown below were created by sampling a Hakaru program 1,000,000 times. 
+}
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[]{ \includegraphics[width=0.45\textwidth]{cauchy.png}\label{fig:f1}}
+  \subfloat[]{ \includegraphics[width=0.45\textwidth]{cauchy_2.png}\label{fig:f2}}
+  \caption{\tiny{A few plots of the Cauchy distribution are shown, along with a few histograms of data that have been sampled from a Hakaru program.}}
+\end{figure}
 
 
 \end{variableblock}
