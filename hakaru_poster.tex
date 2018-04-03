@@ -1,5 +1,5 @@
 \documentclass[22pt]{beamer}
-\usepackage[orientation=portrait, size=custom, width=100.44, height=70,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
+\usepackage[orientation=portrait, size=custom, width=100.44, height=65,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
 \usepackage[absolute,overlay]{textpos}
 \usepackage{bookmark} %pdflatex says to use this to avoid errors...
 \usepackage{graphicx} %for including images
@@ -62,14 +62,14 @@
 \end{textblock}
 
 \begin{textblock}{2}(12.9,0.6)
-\includegraphics[height=12cm]{fireball.png} 
+\includegraphics[height=11cm]{fireball.png} 
 \end{textblock}
 
 \begin{textblock}{8}(4,1)
 \titlepage
 \end{textblock}
 
-\begin{textblock}{5}(0.25,3.6)
+\begin{textblock}{5}(0.25,3.5)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction
@@ -82,7 +82,7 @@
 \normalsize{\textbf{Mathematical Background}}
 
 \bigskip
-\scriptsize{Consider a continuous random variable, \textit{X}, that is distributed by a normal distribution. This is denoted by: }
+\scriptsize{Consider a continuous random variable, \textit{X}, that is distributed according to a normal distribution. This is denoted by: }
 
 \begin{equation*}
 \begin{aligned}
@@ -91,7 +91,7 @@
 \end{equation*}
 
 \bigskip
-\scriptsize{Below is a graph of the probability density function (PDF) for the standard normal distribution. It describes the probability that a sample of the random variable X will be equal to $x$ \in \R.}
+\scriptsize{Below is a graph of the probability density function (PDF) for the standard normal distribution. It describes the probability that a sample of the random variable X will be equal to $x \in \mathbb{R}$.}
 
 \bigskip
 \scriptsize{The treatment of discrete random variables is much the same, except we refer to their probability mass function (PMF)}
@@ -130,7 +130,7 @@
 }
 
 \bigskip
-\scriptsize{`hk-maple' is a provided inference algorithm that uses Maple to perform algebraic transformations on hakaru programs. In its default mode (Simplify), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
+\scriptsize{{\tt \scriptsize{hk-maple}} is a provided inference algorithm that uses Maple to perform algebraic transformations on hakaru programs. In its default mode (Simplify), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
 
 \end{block}
 
@@ -158,10 +158,6 @@
 }
 \end{block}
 
-
-\begin{textblock}{5}(5.5,3.6)
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Motivation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,9 +171,22 @@
 \scriptsize{
 \begin{itemize}
   \item Increase language accessibility: add new language features such as primivite mathematical functions (e.g. log, choose), new distributions, error handling, etc.
-  \item Test language validity: use relationships between distributions to test the validity of program transformations like `hk-maple'. 
+  \item Test language validity: use relationships between distributions to test the validity of program transformations like {\tt \scriptsize{hk-maple}}. 
 \end{itemize}
 }
+
+
+
+\bigskip
+
+
+\end{block}
+
+
+\begin{textblock}{5}(5.5,3.5)
+
+\begin{variableblock}{}{}{}
+\justifying
 
 \normalsize{\textbf{Endeavours}}
 
@@ -189,10 +198,9 @@
 \end{itemize}
         }
 
-\bigskip
 
+\end{variableblock}
 
-\end{block}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Standard Library Development
@@ -219,7 +227,7 @@
 
 \begin{figure}
 \centering
-\includegraphics[height=14cm]{UDR.png}
+\includegraphics[height=12.5cm]{UDR.png}
 \caption{\tiny{A snapshot of the UDR $^{[1]}$ shows how the normal distribution can be transformed into a multitude of other distributions.}}
 \end{figure}
 
@@ -244,7 +252,16 @@
 \end{aligned}
 \end{equation*}
 
+~
+~
+~
 
+\bigskip
+\begin{figure}
+\centering
+\includegraphics[height=3cm]{chi-square.png}
+\caption{\tiny{Our implementation of the chi-square distribution.}}
+\end{figure}
 
 \end{block}
 
@@ -255,36 +272,30 @@
 \end{textblock}
 
 
-\begin{textblock}{5}(10.75,3.6)
+\begin{textblock}{5}(10.75,3.5)
 
 \begin{variableblock}{}{}{}
 \justifying
 
-
-\begin{figure}
-\centering
-\includegraphics[height=3cm]{chi-square.png}
-\caption{\tiny{Our implementation of the chi-square distribution.}}
-\end{figure}
-
-
+\bigskip
 \begin{figure}
 \centering
 \includegraphics[height=3cm]{gamma-poisson.png}
 \caption{\tiny{Our implementation of the gamma-poisson distribution.}}
 \end{figure}
 
-\bigskip
+\scriptsize{Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distribution.}
 
-\scriptsize{Some distributions on the UDR are unreachable from Hakaru's primitive distributions using transformations like the 2 described above. In these cases, we have to implement the model in terms of the PMF for a discrete distribution or in terms of the PDF for a continuous distribution.
+\bigskip
+\scriptsize{
 
 A Python script has been developed that samples a large amount of data and plots the results in a histogram. This is a useful tool for gaining confidence in the correctness of our implementations. The plots shown below were created by sampling a Hakaru program 1,000,000 times. 
 }
 
 \begin{figure}[!tbp]
   \centering
-  \subfloat[]{ \includegraphics[width=0.45\textwidth]{cauchy.png}\label{fig:f1}}
-  \subfloat[]{ \includegraphics[width=0.45\textwidth]{cauchy_2.png}\label{fig:f2}}
+  \subfloat[]{ \includegraphics[width=0.38\textwidth]{cauchy.png}\label{fig:f1}}
+  \subfloat[]{ \includegraphics[width=0.38\textwidth]{cauchy_2.png}\label{fig:f2}}
   \caption{\tiny{A few plots of the Cauchy distribution are shown $^{[1]}$, along with a few histograms of data that have been sampled from a Hakaru program.}}
 \end{figure}
 
@@ -302,7 +313,7 @@ A Python script has been developed that samples a large amount of data and plots
 
 \bigskip
 
-\scriptsize{Assume we know a proven relationship between 2 statistical distributions, A and B, which allows us to transform A and B into distributions that are equivalent to each other. Further assume this transformation takes on one of the forms discussed in the Standard Library Development section. We hypothesize that by applying the appropriate transformations to implementations of A and B, we can create two Hakaru programs whose `hk-maple' outputs will be equivalent to each other. Test cases that prove our hypothesis true indicate the validity of the Hakaru language implementation. Test cases that prove our hypothesis false indicate an underlying bug in the language definition which is to be passed back to the language developers.
+\scriptsize{Assume we know a proven relationship between 2 statistical distributions, A and B, which allows us to transform A and B into distributions that are equivalent to each other. Further assume this transformation takes on one of the forms discussed in the Standard Library Development section. We hypothesize that by applying the appropriate transformations to implementations of A and B, we can create two Hakaru programs whose {\tt \scriptsize{hk-maple}} outputs will be equivalent to each other. Test cases that prove our hypothesis true indicate the validity of the Hakaru language implementation. Test cases that prove our hypothesis false indicate an underlying bug in the language definition which is to be passed back to the language developers.
 }
 
 \end{block}
