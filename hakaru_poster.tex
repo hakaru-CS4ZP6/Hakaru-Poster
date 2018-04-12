@@ -82,11 +82,11 @@
 \begin{block}{\Large{Introduction}}
 \justifying
 
-\footnotesize{Hakaru is an experimental \textbf{probabilistic programming language}, which aims to simplify the implementation of statistical distributions. 
+\footnotesize{Hakaru is an experimental \textbf{probabilistic programming language}, which simplifies the task of implementing models of statistical distributions.
 
 \begin{itemize}
-    \item Niche application means that Hakaru is a small language with limited features.
-    \item Running a hakaru program generates a stream of random numbers distributed according the statistical distribution modeled.
+    \item Niche application, small language.
+    \item Models output a stream of numbers randomly distributed according to the implemented distribution.
     \item Models can be compiled to C and Haskell for use in larger applications.
 \end{itemize}
 
@@ -104,28 +104,22 @@
 \begin{block}{\Large{Motivation}}
 \justifying
 
-
-\normalsize{\textbf{Objectives}}
-
-\footnotesize{
+\bigskip
+\footnotesize{Increase language accessibility:
 \begin{itemize}
-  \item Increase language accessibility: add new language features such as primivite mathematical functions (e.g. log, choose), new distributions, error handling, etc.
-  \item Test language validity: use relationships between distributions to test the validity of program transformations like {\tt \footnotesize{hk-maple}}. 
+  \item Standard Library Development: focus on univariate distributions
+  \item Added in primitive math functions that were incomplete (log(x)) or missing (choose(n,k)) 
+  \item Syntax-highlighting-for-hakaru package for Sublime Text (Figures 2 and 3)
 \end{itemize}
 }
 
+\bigskip
+\footnotesize{Test language validity: 
+\begin{itemize}
+  \item Use known relationships between distributions to test the validity of program transformations like {\tt \footnotesize{hk-maple}}.
+\end{itemize} }
 \justifying
 
-\normalsize{\textbf{Endeavours}}
-
-\footnotesize{
-\begin{itemize}
-  \item Standard library development
-  \item Syntax-highlighting-for-hakaru package for Sublime Text (Figures 2 and 3)
-  \item Test case writing
-  \item Filling in missing language features
-\end{itemize}
-        }
 
 \end{block}
 
