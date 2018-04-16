@@ -223,7 +223,7 @@
 \caption{\tiny{Our implementation of the gamma-poisson distribution.}}
 \end{figure}
 
-\small{In the case of unreachable distributions, we have implemented models in terms of their PDF/PMF.}
+\small{In the case of unreachable distributions, we have implemented models in terms of their PDF.}
 
 \bigskip
 \small{
@@ -269,15 +269,15 @@ Plotting a histogram of a sample population drawn from a model and comparing its
 \bigskip
 
 
-\begin{addmargin}[4em]{4em}
-\textit{Hypothesis: By applying appropriate transformations to implementations of distributions, A and B, we can create two distinct Hakaru programs which, when passed to hk-maple, will reduce to equivalent Hakaru code.}
+\begin{addmargin}[2em]{2em}
+\textit{Hypothesis: By applying appropriate transformations to implementations of distributions, A and B, we can create two distinct Hakaru programs which, when passed to {\tt \small{hk-maple}}, will reduce to equivalent Hakaru code.}
 \end{addmargin}
 
 \bigskip
 Test cases are written in Hakaru, therefore we test relationships of the forms discussed. There are hundreds of possible tests. We have focused on a small set of distributions.
 
 \bigskip
-Tests that pass help prove that Hakaru is valid. Tests that fail either indicate a language bug, or are the consequence of an intended design choice. These results give the language developers useful information for future work on the language.
+Almost all test cases failed. These failures could be due to an error in the language implementation, or a bug in one of the {\tt \small{hk-maple}} algorithms. Sometimes tests fail as a consequence of intended design choice. These failures give the language developers useful information for continuing to make Hakaru more robust.
 }
 
 \end{block}
