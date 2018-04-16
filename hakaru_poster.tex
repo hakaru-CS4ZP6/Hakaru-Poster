@@ -82,18 +82,18 @@
 \begin{block}{\Large{Introduction}}
 \justifying
 
-\footnotesize{Hakaru is an experimental \textbf{probabilistic programming language}, which simplifies the task of implementing models of statistical distributions.
+\footnotesize{Hakaru is an experimental \textbf{probabilistic programming language}, which simplifies implementing models of statistical distributions.
 
 \begin{itemize}
     \item Niche application, small language.
-    \item Models output a stream of numbers randomly distributed according to the implemented distribution.
+    \item Models output a stream of numbers  distributed according to the implemented distribution.
     \item Models can be compiled to C and Haskell for use in larger applications.
 \end{itemize}
 
 }
 
 \bigskip
-\footnotesize{{\tt \footnotesize{hk-maple}} is a provided inference algorithm that uses Maple to perform algebraic transformations on hakaru programs. In its default mode (Simplify), it returns an equivalent hakaru program with greater sampling efficiency. In applications requiring billions of samples (e.g. machine learning) this has the potential to save significant processing time!}
+\footnotesize{{\tt \footnotesize{hk-maple}} is an inference algorithm suite that uses Maple to perform algebraic transformations on Hakaru programs to produce equivalent models with greater sampling efficiency.}
 
 \end{block}
 
@@ -133,17 +133,16 @@
 
 \footnotesize{
 \begin{itemize}
-  \item[\textbf{$\star$}] \textit{Hakaru program $\Longleftrightarrow$ implementation of statistical distribution $\Longleftrightarrow$ probabalistic model $\Longleftrightarrow$ model.}
-  \item[\textbf{$\star$}] \textit{Values pulled from a distribution are called measures. Measures $\Longleftrightarrow$ samples.}
+  \item[\textbf{$\star$}] \textit{Hakaru program $\Longleftrightarrow$ statistical distribution implementation $\Longleftrightarrow$ probabalistic model $\Longleftrightarrow$ model.}
+  \item[\textbf{$\star$}] \textit{PDF: Probability Density.}
+  \item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart.}
   \item[\textbf{$\star$}] `{\textbf{$\sim$}}' vs `{\textbf{$<\sim$}}':
       \begin{itemize}
           \footnotesize
           \item[--] \footnotesize{$X \sim Normal(0, 1)$: random variable, $X$, is distributed according to a normal distribution (statistics literature).}
           \item[--] \footnotesize{{\tt \footnotesize{x $<\sim$ normal(0, 1)}}: pull a random sample from a normal distribution and bind it {\tt \footnotesize{x}} (Hakaru code).}
       \end{itemize}
-  \item[\textbf{$\star$}] \textit{PDF: Probability Density Function (continuous distributions).}
-  \item[\textbf{$\star$}] \textit{PMF: Probability Mass Function (discrete distributions).}
-  \item[\textbf{$\star$}] \textit{UDR chart: Univariate Distribution Relationship chart.}
+
 \end{itemize}
 }
 \end{block}
@@ -161,15 +160,15 @@
 \begin{block}{\Large{Standard Library Development}}
 \justifying
 
-\footnotesize{Accessibility means the standard library implements commonly used statistical distributions. We have followed the UDR to implement distributions will the following guiding principles:
+\footnotesize{The Standard Library implements commonly used univariate distributions. We have followed the UDR to implement distributions with the following guiding principles:
 
 
 \footnotesize{
 
 \bigskip
 \begin{itemize}
-  \item Whenever possible, implement distributions as transformations on pre-existing models.
-  \item In the case of multiple possible implementations, take the shortest possible path from a primitive distribution on the UDR.
+  \item When possible, implement distributions as transformations on pre-existing models.
+  \item In case of many possible implementations, take the shortest path from a primitive distribution on the UDR.
 \end{itemize}
         }
 }
@@ -182,7 +181,7 @@
 \caption{\tiny{A snapshot of the UDR $^{[1]}$ shows how the normal distribution can be transformed into a multitude of other distributions.}}
 \end{figure}
 
-\footnotesize{Hakaru does not allow us to transform the model directly. Rather, we must apply transformations to samples pulled from the model using the bind {\tt \tiny{<$\sim$}} operator. Therefore, we are interested in implementing transformations of the form:}
+\footnotesize{Hakaru does not allow us to transform models directly. Must apply transformations to samples pulled from the model using the bind {\tt \tiny{<$\sim$}} operator. Therefore, we are interested in implementing transformations of the form:}
 
 \begin{equation*}
 \begin{aligned}
@@ -192,7 +191,7 @@
 
 \bigskip
 
-\footnotesize We can extend this definition to include transformations defined in terms of an aggregation of multiple independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 2). 
+\footnotesize We can extend this definition to include transformations defined in terms of an aggregation of many independent samples. For example, the standard chi-square distribution is defined as the sum of the squares of \textit{n} normal random variables (see Figure 2). 
 
 \bigskip
 \begin{figure}
@@ -234,12 +233,12 @@
 \begin{variableblock}{}{}{}
 \justifying
 
-\footnotesize{In the case of unreachable distributions, we have resorted to defining models in terms of their PDF/PMF.}
+\footnotesize{In the case of unreachable distributions, we have implemented models in terms of their PDF/PMF.}
 
 \bigskip
 \footnotesize{
 
-By plotting a histogram of a sample polulation drawn from a distribution's model and comparing its shape to that of its PDF, we can have some confidence that the implementation is correct without proof.
+Plotting a histogram of a sample population drawn from a model and comparing its shape to that of its PDF, we can have some confidence that an implementation is correct.
 
 }
 
@@ -261,17 +260,17 @@ By plotting a histogram of a sample polulation drawn from a distribution's model
 \justifying
 
 
-\footnotesize{The validity of Hakaru can be tested by checking if it recognizes known relationships between distributions. More specifically:
+\footnotesize{Hakaru's validity can be tested by checking if it recognizes known relationships between distributions. More specifically:
 
 \bigskip
 
 
 \begin{addmargin}[4em]{4em}
-\textit{Hypothesis: We hypothesize that by applying the appropriate transformations to implementations of A and B, we can create two Hakaru programs whose hk-maple outputs will be equivalent to each other. Test cases that prove our hypothesis true indicate the validity of the Hakaru language implementation. Test cases that prove our hypothesis false indicate an underlying bug in the language definition which is to be passed back to the language developers.}
+\textit{Hypothesis: By applying appropriate transformations to implementations of distributions, A and B, we can create two distinct Hakaru programs which, when passed to hk-maple, will reduce to equivalent Hakaru code.}
 \end{addmargin}
 
 \bigskip
-Given that test cases are written in Hakaru, we are limited to testing relationships of the form discussed. Our test cases focus on relationships involving a small set of distributions. Results are summarized below.
+Test cases are written in Hakaru, therefore we test relationships of the forms discussed. There are hundreds of possible tests. We have focused on a small set of distributions.
 
 \bigskip
 Tests that pass help prove that Hakaru is valid. Tests that fail either indicate a language bug, or are the consequence of an intended design choice. In all cases, these results give the language developers useful information for future work on the language.
@@ -285,12 +284,12 @@ Tests that pass help prove that Hakaru is valid. Tests that fail either indicate
 
 \begin{block}{\Large{Conclusions \& Future Work}}
 
-\footnotesize{This project was aimed at increasing language accessibility and testing the validity of Hakaru. A lot of ground was covered in both of these aspects in this project, but compared to other popular languages, Hakaru is still under development and has a lot of room for improvement. Here are just a few examples of where major development can still be done.
+\footnotesize{The project was successful in increasing language accessibility, both in terms of Standard Library Development and filled in language features. Testing has proven there is still a lot of work to be done. Here are some suggestions for future work:
 
 \begin{itemize}
-    \item Languages features: Hakaru can be expanded further with new features like import statements and error/exception handling. 
-    \item Standard library development: there are still many types of  distributions left to be implemented, such as multivariate distributions.
-    \item Testing: There are a plethora of relationships between distributions that have yet to be investigated.  
+    \item Languages Features: Hakaru needs import and error/exception handling. 
+    \item Stdlib Dev: multivariate distributions
+    \item Testing: hundreds of known relationships untested 
 \end{itemize}
 
 }
